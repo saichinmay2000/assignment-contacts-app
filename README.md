@@ -126,25 +126,3 @@ Then open your browser to:
 📂 [https://github.com/saichinmay2000/assignment-contacts-app](https://github.com/saichinmay2000/assignment-contacts-app)
 
 ---
-
-## 📌 Future Enhancements
-
-- 🔐 Add user authentication
-- 📊 Analytics on contacts
-- ☁️ Image compression and size limits
-- 🧪 Unit & integration tests
-- 🌍 i18n (multi-language support)
-
----
-
-## 👤 Author
-
-**Sai Chinmay Tripurari**  
-🔗 [Portfolio](https://saichinmay.vercel.app)  
-📧 saichinmay@example.com
-
----
-
-## 📄 License
-
-Licensed under the [MIT License](LICENSE).
