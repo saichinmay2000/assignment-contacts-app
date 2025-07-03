@@ -40,7 +40,7 @@ export default function ContactInfoModal({ contact, onClose, onUpdate }: Props) 
 
         if (imageFile) {
             const filePath = `public/${Date.now()}-${imageFile.name}`;
-            const { data: uploadData, error: uploadError } = await supabase.storage
+            const { error: uploadError } = await supabase.storage
                 .from('contact-images')
                 .upload(filePath, imageFile);
 
