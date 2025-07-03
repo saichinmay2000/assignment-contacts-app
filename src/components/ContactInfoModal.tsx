@@ -117,14 +117,19 @@ export default function ContactInfoModal({ contact, onClose, onUpdate }: Props) 
                                 onChange={(e) => setImageFile(e.target.files?.[0] || null)}
                             />
                         )}
-                        {editing ? (
-                            <Button onClick={handleUpdate}>Save</Button>
-                        ) : (
-                            <Button onClick={() => setEditing(true)}>Edit</Button>
-                        )}
-                        <Button variant="destructive" onClick={handleDelete}>
-                            Delete
-                        </Button>
+                        <div className="flex flex-row gap-5 mt-4">
+                            {editing ? (
+                                <Button variant={'ghost'} onClick={handleUpdate}>Save</Button>
+                            ) : (
+                                <Button variant={'outline'} onClick={() => setEditing(true)}>Edit</Button>
+                            )}
+                            <Button onClick={() => { onClose(); setEditing(false); }}>
+                                Close
+                            </Button>
+                            <Button variant="destructive" onClick={handleDelete}>
+                                Delete
+                            </Button>
+                        </div>
                     </>
                 )}
             </DialogContent>
