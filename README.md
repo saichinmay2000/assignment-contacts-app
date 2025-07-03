@@ -1,69 +1,47 @@
-# React + TypeScript + Vite
+# 📇 Contact Manager App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern contact management web app built using **Vite**, **React**, **Shadcn UI**, and **Supabase**. Users can create, view, update, and delete contacts with image uploads and date tracking.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- ✨ Beautiful UI with Shadcn components
+- 📋 Create, Read, Update, Delete (CRUD) contacts
+- 📅 Store last contacted date
+- 🖼️ Upload profile pictures (stored in Supabase Storage)
+- 🔁 Real-time state updates
+- ✅ Input validations & loading state on actions
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🧱 Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- [Vite](https://vitejs.dev/)
+- [React + TypeScript](https://react.dev/)
+- [Supabase](https://supabase.com/) (Database + Storage)
+- [Shadcn UI](https://ui.shadcn.com/)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📦 Project Structure
+src/
+├── components/
+│ ├── ContactInfoModal.tsx
+│ ├── NewContactModal.tsx
+├── pages/
+│ └── ContactsPage.tsx
+├── lib/
+│ └── supabaseClient.ts
+├── App.tsx
+└── main.tsx
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 1. Clone & Install
+```bash
+git clone https://github.com/yourusername/contact-manager.git
+cd contact-manager
+npm install
+
+
