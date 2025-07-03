@@ -15,11 +15,24 @@ export default function NewContactModal({ open, onClose, onCreate }: Props) {
     const [date, setDate] = useState('');
     const [imageFile, setImageFile] = useState<File | null>(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [errors, setErrors] = useState<{ name?: string; date?: string; imageFile?: string }>({});
 
+    const validate = () => {
+        const newErrors: { name?: string; date?: string; imageFile?: string } = {};
+        if (!name.trim()) newErrors.name = 'Name is required.';
+        if (!date) newErrors.date = 'Date is required.';
+        if (!imageFile) newErrors.imageFile = 'Image is required.';
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
 
     const handleCreate = async () => {
-        if (!name || !date || !imageFile) return;
+        if (!validate()) return;
         setIsLoading(true);
+        if (!imageFile) {
+            setIsLoading(false);
+            return;
+        }
         const { data: uploadData, error: uploadError } = await supabase.storage.from('contact-images').upload(`public/${new Date().getTime()}`, imageFile);
         if (uploadError) {
             console.error("Upload error:", uploadError);
@@ -49,9 +62,12 @@ export default function NewContactModal({ open, onClose, onCreate }: Props) {
                         :
                         <>
                             <Input placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
+                            {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
                             <Input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+                            {errors.date && <p className="text-red-500 text-xs mt-1">{errors.date}</p>}
                             <Input type="file" onChange={(e) => setImageFile(e.target.files?.[0] || null)} />
-                            <Button onClick={handleCreate}>Create</Button>
+                            {errors.imageFile && <p className="text-red-500 text-xs mt-1">{errors.imageFile}</p>}
+                            <Button onClick={handleCreate} disabled={isLoading}>Create</Button>
                         </>
                 }
             </DialogContent>
